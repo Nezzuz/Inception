@@ -2,12 +2,13 @@ version: '3.8'
 
 services:
   mariadb:
-    image: mariadb:11.3
+    build: ./requirements/mariadb
+    restart: on-failure
     environment:
       - DOMAIN_NAME=${DOMAIN_NAME}
       - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=/run/secrets/db_password.txt
-      - MYSQL_ROOT_PASSWORD=/run/secrets/db_root_password.txt
+      - MYSQL_PASSWORD=/run/secrets/db_password
+      - MYSQL_ROOT_PASSWORD=/run/secrets/db_root_password
       - MYSQL_DATABASE=${MYSQL_DATABASE}
     secrets:
       - db_password
@@ -16,11 +17,11 @@ services:
       - "3306:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
-  secrets:
-    db_password:
-      file: ../secrets/db_password.txt
-    db_root_password:
-      file: ../secrets/db_root_password.txt
-  volumes:
-    mariadb_data:
+secrets:
+  db_password:
+    file: ../secrets/db_password.txt
+  db_root_password:
+    file: ../secrets/db_root_password.txt
+volumes:
+  mariadb_data:
 
