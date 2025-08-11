@@ -16,9 +16,6 @@ then
 	echo "[Entrypoint] Loaded MYSQL_ROOT_PASSWORD from secret"
 fi
 
-echo "[DEBUG] MYSQL_PASSWORD: $MYSQL_PASSWORD"
-echo "[DEBUG] MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD"
-
 if [ -f /docker-entrypoint-initdb.d/init.sql.template ];
 then
 	echo "[Entrypoint] Processing init.sql.template..."
