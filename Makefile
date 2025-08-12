@@ -2,6 +2,8 @@
 
 up:
 	@docker compose -f ./srcs/docker-compose.yml up
+down:
+	@docker compose -f ./srcs/docker-compose.yml down -v
 rebuild:
 	@docker compose -f ./srcs/docker-compose.yml down -v
 	@docker compose -f ./srcs/docker-compose.yml build --no-cache
