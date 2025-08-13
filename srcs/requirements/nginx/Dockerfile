@@ -1,4 +1,4 @@
-FROM nginx:stable
+FROM nginx:1.28.0
 
 RUN mkdir -p /etc/nginx/sites-available
 
