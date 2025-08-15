@@ -4,6 +4,8 @@ services:
   mariadb:
     build: ./requirements/mariadb
     restart: on-failure
+    image: mariadb:1.0
+    container_name: mariadb
     environment:
       - DOMAIN_NAME=${DOMAIN_NAME}
       - MYSQL_USER=${MYSQL_USER}
@@ -21,6 +23,8 @@ services:
   wordpress:
     build: ./requirements/wordpress
     restart: on-failure
+    image: wordpress:1.0
+    container_name: wordpress
     depends_on:
       - mariadb
     environment:
@@ -46,6 +50,8 @@ services:
   nginx:
     build: ./requirements/nginx
     restart: on-failure
+    image: nginx:1.0
+    container_name: nginx
     depends_on:
       - wordpress
     environment:
@@ -74,5 +80,6 @@ secrets:
 
 networks:
   custom_bridge:
+    name: jleon-la's_virtualized_network
     driver: bridge
 
