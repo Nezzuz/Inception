@@ -1,4 +1,4 @@
-.PHONY: up rebuild
+.PHONY: up down rebuild addHost
 
 up:
 	@docker compose -f ./srcs/docker-compose.yml up
