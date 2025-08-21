@@ -1,4 +1,6 @@
-FROM mariadb:11.7.2
+FROM debian:bullseye
+
+RUN apt update && apt install -y mariadb-server
 
 COPY /tools/docker-entrypoint.sh /usr/local/bin/custom-entrypoint.sh
 COPY /config/init.sql.template /docker-entrypoint-initdb.d/init.sql.template

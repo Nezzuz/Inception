@@ -1,5 +1,7 @@
-FROM nginx:1.28.0
+FROM debian:bullseye
 
+RUN apt update
+RUN apt install -y nginx
 RUN mkdir -p /etc/nginx/sites-available
 
 COPY ./conf/default.conf /etc/nginx/sites-available/default.conf
